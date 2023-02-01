@@ -1,0 +1,16 @@
+<h1>Reports#report_by_category</h1>
+<p>Find me in app/views/reports/report_by_category.html.erb</p>
+
+
+
+
+
+
+<ol>
+<%sum=0%>
+<% @operations.each do |operation|%>
+    <%sum+=operation.amount%>
+    <li><%= operation.category.name%>, <%= operation.amount%>, <%= operation.description%></li>
+     <%end%>
+    <p>Total <%=sum%></p>
+</ol>

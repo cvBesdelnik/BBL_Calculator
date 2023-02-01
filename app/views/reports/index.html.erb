@@ -1,0 +1,19 @@
+<h1>Reports#index</h1>
+<p>Find me in app/views/reports/index.html.erb</p>
+
+<%# <a href="/reports/report_by_category"><button type="button">Графік</button><a>
+<a href="/reports/report_by_dates"><button type="button">По датам</button></a> %>
+
+
+<form>
+    Початок періоду: <input name="start_date" type="date"><br>
+    Кінець періоду: <input name="end_date" type="date"><br>
+    Тип операцій:
+    Категорія: 
+
+
+    <button type="submit" formaction="/reports/report_by_category">Графік</button>
+    <button type="submit" formaction="/reports/report_by_dates">По датам</button>
+</form>
+
+
