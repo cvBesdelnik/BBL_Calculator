@@ -1,16 +1,64 @@
-<h1>Reports#report_by_dates</h1>
-<p>Find me in app/views/reports/report_by_dates.html.erb</p>
+<h1>Report between dates from <%= @start_date%> to <%=@end_date%></h1>
 
 
+<!--script for using JS-->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<ol>
-<%sum=0%>
-<% @operations.each do |operation|%>
-    <%sum+=operation.amount%>
-    <li><%= operation.category.name%>, <%= operation.amount%>, <%= operation.description%></li>
-     <%end%>
-    <p>Total <%=sum%></p>
-</ol>
+<div>
+  <ol>
+  <%sum=0%>
+  <!--block of each category with total amount-->
+  <% @operations.each do |operation|%>
+          <%sum+=operation.amount%>
+          <li><%= operation.name%> - <%= operation.amount%></li>
+      <%end%>
+  <!--end block of each category with total amount-->
+
+      <!--Total amount in selected period on all categories-->
+      <p><strong>Total</strong> <%=sum%></p>
+  </ol>
+</div>
 
 
+<!--block script ChartJS-->
+<div>
+  <canvas id="myChart" width="600" height="400"></canvas>
+  <script>
+  const ctx = document.getElementById('myChart').getContext('2d');
+  
+  function getRandomColor() { //generates random colours and puts them in string
+  var colors = [];
+  for (var i = 0; i < <%= @amount_category_by_dates.length %>; i++) {
+    var letters = '0123456789ABCDEF'.split('');
+    var color = '#';
+    for (var x = 0; x < 6; x++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    colors.push(color);
+  }
+  return colors;
+}
 
+  const data = {
+    labels: <%= raw @category_by_dates %>,
+    datasets: [{
+      label: 'Report by dates',
+      data: <%= @amount_category_by_dates %>,
+      backgroundColor: getRandomColor(),
+      hoverOffset: 4
+    }]
+  };
+
+  const config = {
+    type: 'pie',
+    data: data,
+    options: {
+      responsive: false
+      },
+  };
+
+  const myChart = new Chart(ctx, config);
+
+  </script>
+</div>
+<!--end block script ChartJS-->

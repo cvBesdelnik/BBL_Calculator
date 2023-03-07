@@ -1,10 +1,28 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @category %>
+<div> 
+  <p>    
+    <strong>Category id:</strong><%= @category.id %>
+  </p>
+
+  <p>    
+    <strong>Category name:</strong> <%= @category.name %>
+  </p>
+
+  <p>    
+    <strong>Description:</strong><%= @category.description %>
+  </p>
+ </div>
 
 <div>
-  <%= link_to "Edit this category", edit_category_path(@category) %> |
-  <%= link_to "Back to categories", categories_path %>
-
   <%= button_to "Destroy this category", @category, method: :delete %>
+  <br>
+
+  <button class="btn btn-outline-secondary">
+    <%= link_to "Edit this category", edit_category_path(@category) %>
+  </button> 
+
+  <button class="btn btn-outline-secondary">
+    <%= link_to "Back to categories", categories_path %>
+  </button>
 </div>

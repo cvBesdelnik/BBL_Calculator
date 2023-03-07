@@ -1,19 +1,26 @@
-<h1>Reports#index</h1>
-<p>Find me in app/views/reports/index.html.erb</p>
+<h1 style>Reports by category or dates</h1>
 
-<%# <a href="/reports/report_by_category"><button type="button">Графік</button><a>
-<a href="/reports/report_by_dates"><button type="button">По датам</button></a> %>
+<div style="margin: 25px;bacground-color:gray;">
+    <!--form for generate reports-->
+    <form>
+        Початок періоду: <input name="start_date" type="date"><br>
+        Кінець періоду: <input name="end_date" type="date"><br>
+        <br>
+        <!--block select category-->
+        <label>Категорія:</label>
+            <select name="category[id]">
+                <% @categories.each do |category|%>
+                <option value= "<%=category.id%>"><%=category.name%></option>
+                <%end%>
+            </select>
+        <!--end block select category-->
 
-
-<form>
-    Початок періоду: <input name="start_date" type="date"><br>
-    Кінець періоду: <input name="end_date" type="date"><br>
-    Тип операцій:
-    Категорія: 
-
-
-    <button type="submit" formaction="/reports/report_by_category">Графік</button>
-    <button type="submit" formaction="/reports/report_by_dates">По датам</button>
-</form>
-
+        <br>
+        <div style="margin-top: 25px;">
+            <button type="submit" formaction="/reports/report_by_category" class="btn btn-outline-secondary">Графік</button>
+            <button type="submit" formaction="/reports/report_by_dates" class="btn btn-outline-secondary">По датам</button>
+        </div>
+    </form>
+    <!--end form for generate reports-->
+</div>
 

@@ -3,12 +3,32 @@
 <h1>Categories</h1>
 
 <div id="categories">
-  <% @categories.each do |category| %>
-    <%= render category %>
-    <p>
-      <%= link_to "Show this category", category %>
-    </p>
-  <% end %>
-</div>
 
-<%= link_to "New category", new_category_path %>
+  <table class="table table-primary table-hover">
+    <!--Describe table head-->
+    <thead>
+      <tr>
+        <th scope="col">Number</th>
+        <th scope="col">Category name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Link to edit/delete</th>
+      </tr>
+    </thead>
+
+    <!--Block fill each category in row by iterate -->
+    <tbody>
+      <% @categories.each do |category| %>
+        <%= render category%>
+      <% end %>    
+    </tbody>
+    <!--end block fill each category in row by iterate -->
+  </table>
+
+ <button class="btn btn-outline-secondary">
+    <%= link_to "New category", new_category_path %>
+  </button>
+
+  <!--Pagination-->
+  <%= paginate @categories %>
+
+</div>

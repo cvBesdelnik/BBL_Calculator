@@ -3,12 +3,39 @@
 <h1>Operations</h1>
 
 <div id="operations">
-  <% @operations.each do |operation| %>
-    <%= render operation %>
-    <p>
-      <%= link_to "Show this operation", operation %>
-    </p>
-  <% end %>
-</div>
+ 
 
-<%= link_to "New operation", new_operation_path %>
+
+
+
+  <table class="table table-primary table-hover">
+    <!--Describe table head-->
+    <thead>
+      <tr>
+        <th scope="col">Number</th>
+        <th scope="col">Operation name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Link to edit/delete</th>
+      </tr>
+    </thead>
+
+    <!--Block fill each operation in row by iterate -->
+    <tbody>      
+      <% @operations.each do |operation|  %>
+        <%= render operation%>
+      <% end %>    
+    </tbody>
+    <!--end block fill each operation in row by iterate -->
+  </table>
+
+ <button type="button" class="btn btn-outline-secondary">
+    <%= link_to "New operation", new_operation_path %>
+  </button>
+  
+  <!--Pagination-->
+  <div style="text-align: center;">
+    <%= paginate @operations %>
+  </div>
+
+</div>

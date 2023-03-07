@@ -70,3 +70,9 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+#  Use Faker for  generating fake data [https://github.com/faker-ruby/faker]
+gem 'faker'
+
+# Make pagination with gem kaminary [gem 'kaminari']
+gem 'kaminari'

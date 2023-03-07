@@ -1,7 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  amount: 9.99
+  amount: 250
   operation_date: 2023-01-12 11:49:36
   description: MyString
   category: one
@@ -11,3 +11,12 @@ two:
   operation_date: 2023-01-12 11:49:36
   description: MyString
   category: two
+
+
+<% (3..20).each do |n| %>
+op_<%=n>:
+  amount: rand(1.0..100.0).round(2)
+  operation_date: Time.now - <%= n %>.day
+  description: MyString_op_<%= n %>
+  category: cat_<%=rand(3..10)>
+<% end %>

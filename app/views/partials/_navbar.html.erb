@@ -1,0 +1,59 @@
+ <!-- block navigation bar-->
+    <nav class="navbar navbar-expand-lg"
+          style="background-color: #929fba">
+      <div class="container-fluid">
+
+      <!--brand name-->
+        <a class="navbar-brand" href="#">BBL CALCULATOR</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- block not dropdown navi-bar menu-->
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                     <%= link_to "Home", root_path, class: "nav-link active" %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to "Reports", reports_index_path, class: "nav-link" %>
+                </li>
+                <!-- endblock not dropdown navi-bar menu-->
+
+                <!-- block dropdown navi-bar menu-->
+                <!--Categories dropdown menu-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Categories</a>
+                    <ul class="dropdown-menu">
+                            <li class="dropdown-item">
+                                <%= link_to "All categories", categories_path, class: "dropdown-item" %>
+                            </li>
+                            <li class="dropdown-item">
+                                 <%= link_to "New category", new_category_path, class: "dropdown-item" %>
+                            </li>
+                    </ul>
+                </li>
+                <!--end Categories dropdown menu-->
+
+                <!--Operations dropdown menu-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Operations</a>
+                    <ul class="dropdown-menu">
+                            <li class="dropdown-item">
+                                <%= link_to "All operations", operations_path, class: "dropdown-item" %>
+                            </li>
+                            <li class="dropdown-item">
+                                <%= link_to "New operation", new_operation_path, class: "dropdown-item" %>
+                            </li>
+                    </ul>
+                </li>
+                <!--end Operations dropdown menu-->
+            
+            </ul>
+        </div>
+        <!-- end block dropdown navi-bar menu-->
+      </div>
+  </nav>
+<!-- end block navigation bar-->

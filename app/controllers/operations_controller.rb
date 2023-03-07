@@ -3,16 +3,24 @@ class OperationsController < ApplicationController
 
   # GET /operations or /operations.json
   def index
-    @operations = Operation.all
+    @operations = Operation.joins(:category)
+    .select(:id, :amount, :operation_date, :description, :name).page(params[:page])
+   
+    # Also work
+    #  @operations = Operation.joins(:category)
+    #  .select('operations.amount, operations.description, operations.id, operations.operation_date, categories.name')
   end
 
-  # GET /operations/1 or /operations/1.json
+    # GET /operations/1 or /operations/1.json
   def show
+    @operation = Operation.joins(:category)
+    .select(:id, :amount, :operation_date, :description, :name).find(params[:id])
   end
 
   # GET /operations/new
   def new
     @operation = Operation.new
+    @categories = Category.all.map {|category| [category.name, category.id]}
   end
 
   # GET /operations/1/edit
@@ -65,6 +73,6 @@ class OperationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def operation_params
-      params.require(:operation).permit(:amount, :operation_date, :description, :category_id)
+      params.require(:operation).permit(:amount, :operation_date, :description, :id, :name)
     end
 end

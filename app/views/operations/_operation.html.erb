@@ -1,22 +1,12 @@
 <div id="<%= dom_id operation %>">
-  <p>
-    <strong>Amount:</strong>
-    <%= operation.amount %>
-  </p>
-
-  <p>
-    <strong>Operation date:</strong>
-    <%= operation.operation_date %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= operation.description %>
-  </p>
-
-  <p>
-    <strong>Category:</strong>
-    <%= operation.category_id %>
-  </p>
+  
+  <tr>      
+    <th scope="row"><%= operation.id %></th>
+    <td><%= operation.operation_date %></td>
+    <td><%= operation.description %></td>
+    <td><%= operation.amount %></td>
+    <td><%= link_to "Show this operation", operation %>   
+    </td>
+  </tr>
 
 </div>
